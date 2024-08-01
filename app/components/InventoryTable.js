@@ -6,33 +6,40 @@ import { categories } from '../data/categories';
 const categoryColors = Object.fromEntries(categories.map(cat => [cat.name, cat.color]));
 
 const InventoryTable = ({ inventory, addItem, removeItem }) => (
-
-  <TableContainer component={Paper} sx={{ mt: 4 }}>
+  <TableContainer
+    component={Paper}
+    sx={{
+      borderRadius: '16px',
+      boxShadow: 3,
+      overflow: 'hidden',
+      maxHeight: '400px', // Adjust height as needed
+    }}
+  >
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif' }}>Item Name</TableCell>
-          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif' }}>Quantity</TableCell>
-          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif' }}>Expiry Date</TableCell>
-          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif' }}>Category</TableCell>
-          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif' }}>Actions</TableCell>
+          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>Item Name</TableCell>
+          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>Quantity</TableCell>
+          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>Expiry Date</TableCell>
+          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>Category</TableCell>
+          <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>Actions</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         {inventory.map(({ name, quantity, expiryDate, category }) => (
           <TableRow key={name}>
-            <TableCell sx={{ fontFamily: 'Poppins, sans-serif' }}>
+            <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>
               {name.charAt(0).toUpperCase() + name.slice(1)}
             </TableCell>
-            <TableCell sx={{ fontFamily: 'Poppins, sans-serif' }}>{quantity}</TableCell>
-            <TableCell sx={{ fontFamily: 'Poppins, sans-serif' }}>{expiryDate}</TableCell>
-            <TableCell sx={{ fontFamily: 'Poppins, sans-serif' }}>
+            <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>{quantity}</TableCell>
+            <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>{expiryDate}</TableCell>
+            <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px' }}>
               <Chip
                 label={category}
                 sx={{
                   borderRadius: '20px',
-                  backgroundColor: categoryColors[category] || '#e0e0e0', // Use predefined color or default to light gray
-                  color: '#000', // Black text color
+                  backgroundColor: categoryColors[category] || '#e0e0e0',
+                  color: '#000',
                 }}
               />
             </TableCell>
