@@ -1,4 +1,6 @@
-import { Box, Button, Modal, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Modal, Stack, TextField, Typography, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { categories } from '../data/categories';
+
 
 const AddItemModal = ({ open, handleClose, itemName, setItemName, itemQuantity, setItemQuantity, itemExpiryDate, setItemExpiryDate, itemCategory, setItemCategory, addItem }) => (
   <Modal
@@ -43,20 +45,30 @@ const AddItemModal = ({ open, handleClose, itemName, setItemName, itemQuantity, 
           onChange={(e) => setItemQuantity(e.target.value)}
         />
         <TextField
-          label="Expiry Date"
-          variant="outlined"
-          type="date"
-          fullWidth
-          value={itemExpiryDate}
-          onChange={(e) => setItemExpiryDate(e.target.value)}
-        />
-        <TextField
-          label="Category"
-          variant="outlined"
-          fullWidth
+        label="Expiry Date"
+        variant="outlined"
+        type="date"
+        fullWidth
+        InputLabelProps={{
+          shrink: true, 
+        }}
+        value={itemExpiryDate}
+        onChange={(e) => setItemExpiryDate(e.target.value)}
+      />
+        <FormControl fullWidth>
+        <InputLabel>Category</InputLabel>
+        <Select
           value={itemCategory}
           onChange={(e) => setItemCategory(e.target.value)}
-        />
+          label="Category"
+        >
+          {categories.map((category) => (
+            <MenuItem key={category.name} value={category.name}>
+              {category.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
         <Button variant="contained" onClick={addItem}>
           Add
         </Button>
