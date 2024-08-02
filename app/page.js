@@ -157,7 +157,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 onClick={getRecipeSuggestions}
-                sx={{ ml: 2, backgroundColor: '#362312', color: 'white'}}
+                sx={{ ml: 2, backgroundColor: '#362312', color: 'white',":hover": { backgroundColor: '#795C32' }}}
               >
                 Get Suggestions
               </Button>

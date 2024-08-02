@@ -40,14 +40,14 @@ const InventoryTable = ({ inventory, addItem, removeItem, handleOpen }) => {
                 <SearchIcon />
               </IconButton>
             ),
-            sx: { height: '30px' } // Adjust height of the search input
+            sx: { height: '30px' } 
           }}
-          sx={{ width: '50%' }} // Adjust width of the search input
+          sx={{ width: '50%' }} 
         />
         <Button
           variant="contained"
           onClick={handleOpen}
-          sx={{ height: '30px', backgroundColor: '#362312', color: 'white', marginLeft: 'auto' }}
+          sx={{ height: '30px', backgroundColor: '#362312', color: 'white', marginLeft: 'auto', ":hover": { backgroundColor: '#795C32' } }}
         >
           Add New Item
         </Button>
@@ -56,7 +56,7 @@ const InventoryTable = ({ inventory, addItem, removeItem, handleOpen }) => {
         component={Paper}
         sx={{
           borderRadius: '16px',
-          boxShadow: 3,
+          boxShadow: 0,
           overflow: 'auto', // Enable scrolling
           maxHeight: '400px', // Adjust height as needed
           width: '100%', // Set the width of the TableContainer
@@ -64,23 +64,23 @@ const InventoryTable = ({ inventory, addItem, removeItem, handleOpen }) => {
       >
         <Table sx={{ width: '100%' }}>
           <TableHead>
-            <TableRow>
-              <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>Item Name</TableCell>
-              <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>Quantity</TableCell>
-              <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>Expiry Date</TableCell>
-              <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>Category</TableCell>
-              <TableCell sx={{ color: 'gray', fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>Actions</TableCell>
+            <TableRow >
+              <TableCell sx={{ color: 'black', fontFamily: 'Poppins, sans-serif',fontWeight:'bold', fontSize: '14px', height: '20px' , paddingTop: 0.8, paddingBottom: 0.8 }}>Item Name</TableCell>
+              <TableCell sx={{ color: 'black', fontFamily: 'Poppins, sans-serif',fontWeight:'bold', fontSize: '14px', height: '20px' , paddingTop: 0.8, paddingBottom: 0.8 }}>Quantity</TableCell>
+              <TableCell sx={{ color: 'black', fontFamily: 'Poppins, sans-serif', fontWeight:'bold',fontSize: '14px', height: '20px' , paddingTop: 0.8, paddingBottom: 0.8 }}>Expiry Date</TableCell>
+              <TableCell sx={{ color: 'black', fontFamily: 'Poppins, sans-serif', fontWeight:'bold',fontSize: '14px', height: '20px' , paddingTop: 0.8, paddingBottom: 0.8 }}>Category</TableCell>
+              <TableCell sx={{ color: 'black', fontFamily: 'Poppins, sans-serif', fontWeight:'bold',fontSize: '14px', height: '20px' ,paddingTop: 0.8, paddingBottom: 0.8 }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {filteredInventory.map(({ name, quantity, expiryDate, category }) => (
               <TableRow key={name}>
-                <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>
+                <TableCell sx={{ color:'gray',fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '20px', paddingTop: 0.8, paddingBottom: 0.8  }}>
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </TableCell>
-                <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>{quantity}</TableCell>
-                <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>{expiryDate}</TableCell>
-                <TableCell sx={{ fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '30px' }}>
+                <TableCell sx={{ color:'gray',fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '20px' , paddingTop: 0.8, paddingBottom: 0.8 }}>{quantity}</TableCell>
+                <TableCell sx={{ color:'gray',fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '20px' , paddingTop: 0.8, paddingBottom: 0.8  }}>{expiryDate}</TableCell>
+                <TableCell sx={{ color:'gray',fontFamily: 'Poppins, sans-serif', fontSize: '14px', height: '20px', paddingTop: 0.8, paddingBottom: 0.8  }}>
                   <Chip
                     label={category}
                     sx={{
@@ -90,7 +90,7 @@ const InventoryTable = ({ inventory, addItem, removeItem, handleOpen }) => {
                     }}
                   />
                 </TableCell>
-                <TableCell sx={{ height: '30px' }}>
+                <TableCell sx={{color:'gray', height: '20px', paddingTop: 0.8, paddingBottom: 0.8}}>
                   <IconButton onClick={() => addItem(name)}>
                     <AddIcon />
                   </IconButton>
