@@ -19,6 +19,7 @@ import Header from './components/Header';
 import AddItemModal from './components/AddItemModal';
 import InventoryTable from './components/InventoryTable';
 import ShoppingList from './components/ShoppingList'; 
+import CameraComponent from './components/CameraComponent'; 
 import { fetchInventory, addItemToInventory, removeItemFromInventory } from './firebase/utils';
 
 export default function Home() {
@@ -125,6 +126,7 @@ export default function Home() {
             setItemCategory={setItemCategory}
             addItem={addItem}
           />
+          <CameraComponent />
         </Box>
         <Box
           width="100%"

@@ -1,4 +1,5 @@
-import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, updateDoc,query, setDoc, deleteDoc, getDoc, arrayUnion } from 'firebase/firestore';
+import { getStorage, ref, uploadString, getDownloadURL } from 'firebase/storage';
 import { firestore } from '@/firebase';
 
 export const fetchInventory = async () => {
@@ -33,4 +34,38 @@ export const removeItemFromInventory = async (name) => {
       await setDoc(docRef, { quantity: quantity - 1 }, { merge: true });
     }
   }
+};
+
+const storage = getStorage();
+
+const uploadImageToFirebase = async (base64Image) => {
+  const timestamp = Date.now();
+  const storageRef = ref(storage, `gallery/photo_${timestamp}.jpg`);
+  await uploadString(storageRef, base64Image, 'data_url');
+  const imageUrl = await getDownloadURL(storageRef);
+  return imageUrl;
+};
+
+const addImageUrlToFirestore = async (imageUrl) => {
+  const galleryRef = doc(firestore, 'gallery', 'itemgallery');
+  await updateDoc(galleryRef, {
+    imgURL: arrayUnion(imageUrl),
+  });
+};
+
+const fetchImageUrls = async () => {
+  const galleryRef = doc(firestore, 'gallery', 'itemgallery');
+  const galleryDoc = await getDoc(galleryRef);
+  if (galleryDoc.exists()) {
+    return galleryDoc.data().imgURL;
+  } else {
+    console.log('No such document!');
+    return [];
+  }
+};
+
+export {
+  uploadImageToFirebase,
+  addImageUrlToFirestore,
+  fetchImageUrls,
 };
