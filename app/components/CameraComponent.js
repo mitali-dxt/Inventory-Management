@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Camera } from "react-camera-pro";
-import { Box, Button, Typography, ImageList, ImageListItem } from '@mui/material';
+import { Box, Button, Typography, IconButton, ImageList, ImageListItem } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import { uploadImageToFirebase, addImageUrlToFirestore, fetchImageUrls } from '../firebase/utils';
 
 const CameraComponent = () => {
@@ -36,31 +37,87 @@ const CameraComponent = () => {
   }, []);
 
   return (
-    <Box>
-      {!showCamera ? (
-        <Button variant="contained" onClick={handleOpenCamera}>
-          Upload Photo
-        </Button>
-      ) : (
-        <>
-          <Camera ref={camera} />
-          <Button variant="contained" onClick={handleTakePhoto}>
-            Take Photo
-          </Button>
-          <Button variant="contained" onClick={handleCloseCamera}>
-            Close Camera
-          </Button>
-        </>
-      )}
-      {image && <img src={image} alt='Taken photo' />}
-      <Typography variant="h6" mt={2}>Gallery</Typography>
-      <ImageList cols={3} rowHeight={164}>
-        {galleryImages.map((imgUrl, index) => (
-          <ImageListItem key={index}>
-            <img src={imgUrl} alt={`Gallery item ${index}`} />
-          </ImageListItem>
-        ))}
-      </ImageList>
+    <Box 
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      gap={2}
+      sx={{ width: '100%' }}
+    >
+      <Box
+        mt={4}
+        p={2}
+        width="100%"
+        maxWidth="800px"
+        borderRadius="16px"
+        bgcolor='#2B1700'
+        boxShadow={3}
+      >
+        <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
+          <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', color: 'white' }}>
+            Gallery
+          </Typography>
+          {!showCamera && (
+            <IconButton
+              onClick={handleOpenCamera}
+              sx={{
+                backgroundColor: 'white',
+                color: 'black',
+                ":hover": { backgroundColor: '#F5F5DC' },
+                borderRadius: '8px',
+                padding: '8px'
+              }}
+            >
+              <AddIcon />
+            </IconButton>
+          )}
+        </Box>
+
+        {showCamera ? (
+          <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
+            <Box
+              sx={{
+                width: '100%',
+                height: '400px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                overflow: 'hidden',
+                borderRadius: '8px',
+                border: '2px solid #ccc'
+              }}
+            >
+              <Camera ref={camera} aspectRatio={16 / 9} />
+            </Box>
+            <Button
+              variant="contained"
+              onClick={handleTakePhoto}
+              sx={{ backgroundColor: '#F5F5DC', color: 'black', ":hover": { backgroundColor: '#C2B280' } }}
+            >
+              Take Photo
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleCloseCamera}
+              sx={{ backgroundColor: '#A52A2A', color: 'white', ":hover": { backgroundColor: '#c62828' } }}
+            >
+              Close Camera
+            </Button>
+          </Box>
+        ) : (
+          <ImageList cols={3} gap={8} rowHeight={200} sx={{ width: '100%' }}>
+            {galleryImages.map((imgUrl, index) => (
+              <ImageListItem key={index} sx={{ overflow: 'hidden', borderRadius: '8px' }}>
+                <img
+                  src={imgUrl}
+                  alt={`Gallery item ${index}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        )}
+      </Box>
     </Box>
   );
 };

@@ -3,11 +3,11 @@ import { Box, Typography } from '@mui/material';
 const Header = () => (
   <Box
     width="100%"
-    height="200vh"
+    height="60vh"
     display="flex"
     alignItems="center"
     justifyContent="center"
-    position="relative"
+    position="absolute"
     bgcolor="lightblue"
   >
     <img

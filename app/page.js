@@ -2,8 +2,6 @@
 
 import {
   GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
 } from "@google/generative-ai";
 
 const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
@@ -84,7 +82,7 @@ export default function Home() {
   return (
     <Box
       width="100vw"
-      height="150vh"
+      height="270vh"
       display="flex"
       flexDirection="column"
       alignItems="center"
@@ -95,7 +93,7 @@ export default function Home() {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        mt={5}
+        mt="60vh"
         gap={2}
       >
         <Box
@@ -126,7 +124,7 @@ export default function Home() {
             setItemCategory={setItemCategory}
             addItem={addItem}
           />
-          <CameraComponent />
+          
         </Box>
         <Box
           width="100%"
@@ -184,7 +182,9 @@ export default function Home() {
               </Box>
             )}
           </Box>
+          
         </Box>
+        <CameraComponent />
       </Box>
     </Box>
   );
