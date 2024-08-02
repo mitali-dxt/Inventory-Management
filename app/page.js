@@ -109,15 +109,9 @@ export default function Home() {
             inventory={inventory}
             addItem={addItem}
             removeItem={removeItem}
+            handleOpen={handleOpen}
           />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleOpen}
-            sx={{ mt: 2 }} // Add margin-top to separate from table
-          >
-            Add New Item
-          </Button>
+          
           <AddItemModal
             open={open}
             handleClose={handleClose}
@@ -162,9 +156,8 @@ export default function Home() {
               </Typography>
               <Button
                 variant="contained"
-                color="secondary"
                 onClick={getRecipeSuggestions}
-                sx={{ ml: 2 }}
+                sx={{ ml: 2, backgroundColor: '#362312', color: 'white'}}
               >
                 Get Suggestions
               </Button>

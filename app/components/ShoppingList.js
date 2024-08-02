@@ -51,7 +51,7 @@ const ShoppingList = () => {
         onChange={(e) => setNewItem(e.target.value)}
         sx={{ mb: 2 }}
       />
-      <Button variant="contained" color="primary" fullWidth onClick={addItem}>
+      <Button variant="contained"  fullWidth onClick={addItem}  sx={{ height: '30px', backgroundColor: '#362312', color: 'white'}}>
         Add
       </Button>
       <List>
