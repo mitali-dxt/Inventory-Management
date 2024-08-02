@@ -17,15 +17,16 @@ const AddItemModal = ({ open, handleClose, itemName, setItemName, itemQuantity, 
         transform: 'translate(-50%, -50%)',
         width: 400,
         bgcolor: 'background.paper',
-        border: 'none',
+        border: 'ButtonShadow',
         boxShadow: 24,
         p: 4,
         display: 'flex',
         flexDirection: 'column',
         gap: 3,
+        borderRadius: '8px'
       }}
     >
-      <Typography id="modal-title" variant="h6">
+      <Typography id="modal-title" variant="h6" fontWeight={'bold'}>
         Add Item
       </Typography>
       <Stack width="100%" direction="column" spacing={2}>
@@ -69,7 +70,7 @@ const AddItemModal = ({ open, handleClose, itemName, setItemName, itemQuantity, 
           ))}
         </Select>
       </FormControl>
-        <Button variant="contained" onClick={addItem}>
+        <Button variant="contained" sx={{ height: '30px', backgroundColor: '#362312', color: 'white',":hover": { backgroundColor: '#795C32' }}}onClick={addItem}>
           Add
         </Button>
       </Stack>

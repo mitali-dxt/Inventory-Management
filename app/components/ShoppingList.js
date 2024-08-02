@@ -42,7 +42,7 @@ const ShoppingList = () => {
 
   return (
     <Box sx={{ width: '300px', p: 2, bgcolor: 'white', borderRadius: '8px', boxShadow: 3 }}>
-      <Typography variant="h6" fontWeight="bold" mb={2}>Shopping List</Typography>
+      <Typography variant="h6" fontWeight="bold" mb={2}> 🛒 Shopping List</Typography>
       <TextField
         label="Add item"
         variant="outlined"

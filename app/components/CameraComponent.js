@@ -55,7 +55,7 @@ const CameraComponent = () => {
       >
         <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
           <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', color: 'white' }}>
-            Gallery
+          🔳 Gallery
           </Typography>
           {!showCamera && (
             <IconButton
