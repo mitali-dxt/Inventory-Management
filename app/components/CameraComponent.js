@@ -54,8 +54,8 @@ const CameraComponent = () => {
         boxShadow={3}
       >
         <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', color: 'white' }}>
-          🔳 Gallery
+          <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', color: 'white', fontStyle:'italic' }}>
+          🔳 Your Pantry Items
           </Typography>
           {!showCamera && (
             <IconButton
