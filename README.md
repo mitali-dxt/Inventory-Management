@@ -1,4 +1,4 @@
-# MyLittlePantry
+# MyLittlePantry 📦
 
 A web application to track pantry items, manage shopping lists, and get recipe suggestions based on available pantry items.
 
